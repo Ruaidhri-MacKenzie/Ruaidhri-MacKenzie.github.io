@@ -1,11 +1,7 @@
 :root {
-	--colour1: #1c1811;
-	--colour2: #f1d302;
-	/* --colour2: #d21600; */
-	/* --colour2: #1c5d99; */
-	/* --colour2: #149911; */
-	/* --colour2: #f18f01; */
-	/* --colour2: #832161; */
+	--light: #f2f3f4;
+	--dark: #000;
+	--colour1: #d21600;
 }
 
 *, *::before, *::after {
@@ -17,145 +13,118 @@
 body {
 	min-height: 100vh;
 	display: grid;
-	grid-template-rows: auto 1fr auto;
+	grid-template-rows: 1fr 1fr;
 	grid-template-areas:
 		"header"
-		"main"
-		"footer";
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		"main";
+	font-family: 'Roboto', sans-serif;
 }
 
+@media screen and (max-width: 1080px) {
+	body {
+		grid-template-rows: 472px 1fr;
+	}
+}
+@media screen and (max-width: 704px) {
+	body {
+		grid-template-rows: 356px 1fr;
+	}
+}
 .header {
 	grid-area: header;
-	padding: 2em;
-	background-color: var(--colour1);
-	border-bottom: 4px solid var(--colour2);
+	background-color: var(--light);
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 }
 
 .header__title {
 	cursor: default;
 	padding: 0.125em;
-	background-color: var(--colour2);
-	color: var(--colour1);
+	color: var(--dark);
 	font-size: 3rem;
 }
 
 .header__subtitle {
 	cursor: default;
-	margin-top: 0.5em;
+	user-select: none;
 	padding: 0.25em;
-	background-color: var(--colour2);
-	color: var(--colour1);
+	color: var(--dark);
+}
+
+.header__icon {
+	cursor: pointer;
+	display: inline;
+	font-size: 2rem;
+	padding: 0.15em;
+	margin: 0.25em;
+	border-radius: 5px;
+	background-color: var(--light);
+	color: var(--dark);
+}
+
+.header__icon:hover,
+.header__link:focus > .header__icon {
+	background-color: var(--dark);
+	color: var(--light);
 }
 
 .main {
 	grid-area: main;
-	background-color: var(--colour1);
-	display: grid;
-	grid-template-columns: auto 25%;
-	grid-template-areas:
-		"projects about";
-}
-
-.projects {
-	grid-area: projects;
-	padding: 1em;
+	padding: 1em 0;
+	background-color: var(--dark);
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 }
 
-.project__item {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
+.preview {
 	width: 320px;
 	height: 320px;
 	margin: 1em;
-	padding: 1em;
-	background-color: var(--colour1);
-	border: 4px solid var(--colour2);
-	text-align: center;
+	background-size: contain;
+	border-radius: 32px;
 }
 
-.project__label {
-	padding: 0.5em;
-	background-color: var(--colour2);
-	color: var(--colour1);
-	font-family: sans-serif;
-	font-weight: 900;
-	font-size: 2rem;
-}
+.preview__info {
+	width: 320px;
+	height: 320px;
+	cursor: pointer;
+	user-select: none;
+	border-radius: 32px;
+	background-color: #000000ee;
+	border: 1px solid var(--light);
+	opacity: 0;
 
-.project__link {
-	text-decoration: none;
-}
-
-.project__link:hover .project__item,
-.project__link:focus .project__item {
-	background-color: var(--colour2);
-	border: 4px solid var(--colour1);
-}
-.project__link:hover .project__label,
-.project__link:focus .project__label {
-	background-color: var(--colour1);
-	color: var(--colour2);
-}
-
-.about {
-	grid-area: about;
-	padding: 1em;
-	padding-left: 2em;
-	background-color: var(--colour2);
-}
-
-.about__title {
-	margin-top: 0.5em;
-	color: var(--colour1);
-}
-
-.about__text {
-	margin-bottom: 1em;
-	color: var(--colour1);
-	font-size: 1.25rem;
-}
-
-.footer {
-	grid-area: footer;
-	padding: 0.5em;
-	background-color: var(--colour1);
-	color: var(--colour2);
-	border-top: 4px solid var(--colour2);
-	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: opacity 400ms ease-in;
 }
 
-.footer__copyright {
-	cursor: default;
-	display: inline;
-	margin: 1em;
+.preview__info:hover {
+	opacity: 1;
+	transition: opacity 200ms ease-out;
 }
 
-.footer__icon {
-	cursor: pointer;
-	display: inline;
-	font-size: 2rem;
-	padding: 0.125em;
-	margin: 0.25em;
-	background-color: var(--colour1);
-	color: var(--colour2);
+.preview__text {
+	text-align: center;
+	margin: 0 1em;
+	color: var(--light);
 }
 
-.footer__icon:hover,
-.footer__link:focus > .footer__icon {
-	background-color: var(--colour2);
-	color: var(--colour1);
+.preview1 {
+	background-image: url('mernlogo.png');
+}
+
+.preview2 {
+	background-image: url('npmlogo.png');
+}	
+
+
+.preview3 {
+	background-image: url('firefoxlogo.png');
 }
