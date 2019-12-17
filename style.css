@@ -116,6 +116,10 @@ body {
 	color: var(--light);
 }
 
+.preview__link {
+	text-decoration: none;
+}
+
 .preview1 {
 	background-image: url('mernlogo.png');
 }
